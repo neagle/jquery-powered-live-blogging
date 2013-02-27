@@ -3,7 +3,7 @@
 
   Authors: Luke Mahé (code)
            Marcin Wichary (code and design)
-           
+
            Dominic Mazzoni (browser compatibility)
            Charles Chen (ChromeVox support)
 
@@ -29,9 +29,9 @@
 }
 
 .slides.template-fed > article:not(.nobackground):not(.biglogo) {
-    background: url( http://o.aolcdn.com/os/fed/images/fed-logo-small.png ) 710px 625px no-repeat;  
-    background-color: white;  
-} 
+    /*background: url( http://o.aolcdn.com/os/fed/images/fed-logo-small.png ) 710px 625px no-repeat;  */
+    background-color: white;
+}
 
 .slides.template-fed.layout-widescreen > article:not(.nobackground):not(.biglogo),
 .slides.template-fed.layout-faux-widescreen > article:not(.nobackground):not(.biglogo) {

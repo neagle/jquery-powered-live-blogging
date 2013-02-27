@@ -25,6 +25,10 @@
 
   <style>
     /* FED Styles */
+
+    ul {
+      margin-top: .5em !important;
+    }
     .frame img {
         border-radius: 17px;
         display: block;
@@ -247,6 +251,109 @@
       </article>
 
       <article>
+        <h2>The Toolbox</h2>
+      </article>
+
+      <article>
+        <h3>Git and Github</h3>
+
+        <ul>
+          <li>Git is fast and flexible.</li>
+          <li>Github
+            <ul>
+              <li>beautiful UI</li>
+              <li>issue tracking</li>
+              <li>great documentation display</li>
+              <li>great for code reviews</li>
+            </ul>
+          </li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>Compass</h3>
+        <iframe src="http://compass-style.org"></iframe>
+      </article>
+
+      <article>
+        <h3>Compass</h3>
+
+        <ul>
+          <li>{{ cool stuff about Compass }}</li>
+        </ul>
+      </article>
+
+      <article>
+        <br><br>
+        <img class="centered" src="images/grunt-logo.png" />
+      </article>
+
+      <article>
+        <h3>Grunt JS</h3>
+        <p>A JavaScript Task Runner</p>
+
+        <section>
+          <pre style="height: 400px; overflow: auto;" class="lang-html"><code>± % grunt                                                                                                                                               TODO: 3  3:01 PM ✧ Wednesday, February 27
+Running "lint:files" (lint) task
+Lint free.
+
+Running "qunit:files" (qunit) task
+Testing aol.liveupdate.htmlOK
+>> 0 assertions passed (14ms)
+
+Running "concat:dist" (concat) task
+File "dist/jquery.liveupdate.js" created.
+
+Running "concat:distNoUi" (concat) task
+File "dist/jquery.liveupdate-noui.js" created.
+
+Running "min:bundle" (min) task
+File "dist/jquery.liveupdate.min.js" created.
+Uncompressed size: 116341 bytes.
+Compressed size: 19434 bytes gzipped (60752 bytes minified).
+
+Running "min:bundleNoUi" (min) task
+File "dist/jquery.liveupdate-noui.min.js" created.
+Uncompressed size: 71907 bytes.
+Compressed size: 6810 bytes gzipped (17647 bytes minified).
+
+Running "min:api" (min) task
+File "dist/jquery.liveupdateapi.min.js" created.
+Uncompressed size: 12903 bytes.
+Compressed size: 1423 bytes gzipped (3292 bytes minified).
+
+Running "min:ui" (min) task
+File "dist/jquery.liveupdateui.min.js" created.
+Uncompressed size: 53866 bytes.
+Compressed size: 4652 bytes gzipped (12270 bytes minified).
+
+Running "compass:dev" (compass) task
+`compass compile --sass-dir="assets/scss" --css-dir="assets/dev/css" --images-dir="assets/resources/images" --debug-info --relative-assets --require animation --force` was initiated.
+
+COMPASS output:
+overwrite assets/dev/css/aol.liveupdate.aolcom.css
+overwrite assets/dev/css/aol.liveupdate.css
+
+Running "compass:prod" (compass) task
+`compass compile --sass-dir="assets/scss" --css-dir="assets/prod/css" --images-dir="assets/resources/images" --relative-assets --output-style compressed --no-line-comments --require animation --force` was initiated.
+
+COMPASS output:
+identical assets/prod/css/aol.liveupdate.aolcom.css
+overwrite assets/prod/css/aol.liveupdate.css
+
+Done, without errors.</code></pre>
+        </section>
+      </article>
+
+      <article>
+        <ul>
+          <li>Simple, JSON config</li>
+          <li>A watch that automatically rebuilds when files are changed</li>
+          <li>A local server</li>
+        </ul>
+      </article>
+
+      <article>
         <h2>Starting Over</h2>
       </article>
 
@@ -260,7 +367,7 @@
         </ul>
 
         <section>
-          <pre><code>$.fn.myWidget = function () {
+          <pre class="lang-js"><code>$.fn.myWidget = function () {
   return this.each(function () {
     $(this).append('&lt;p&gt;Hello world!&lt;/p&gt;');
   });
@@ -339,293 +446,143 @@ return this.each(function () {
         </section>
       </article>
 
-
-
-
-      <article class='smaller'>
-        <h3>
-          Simple slide with header and text (small font)
-        </h3>
-        <p>
-          This is a slide with just text. This is a slide with just text.
-          This is a slide with just text. This is a slide with just text.
-          This is a slide with just text. This is a slide with just text.
-        </p>
-        <p>
-          There is more text just underneath with a <code>code sample: 5px</code>.
-        </p>
-      </article>
-
       <article>
-        <h3>
-          Slide with bullet points and a longer title, just because we
-          can make it longer
-        </h3>
-        <ul>
-          <li>
-            Use this template to create your presentation
-          </li>
-          <li>
-            Use the provided color palette, box and arrow graphics, and
-            chart styles
-          </li>
-          <li>
-            Instructions are provided to assist you in using this
-            presentation template effectively
-          </li>
-          <li>
-            At all times strive to maintain Google's corporate look and feel
-          </li>
-        </ul>
-      </article>
-
-      <article>
-        <h3>
-          Slide with bullet points that builds
-        </h3>
+        <h3>URL Pattern</h3>
         <ul class="build">
-          <li>
-            This is an example of a list
-          </li>
-          <li>
-            The list items fade in
-          </li>
-          <li>
-            Last one!
-          </li>
+          <li><code class="blue">postId/0</code><br>The initial call grabs everything.</li>
+          <li>In that call&rsquo;s data is a <code>last_update</code> value.</li>
+          <li><code class="green">postId/12432</code><br>For subsequent calls, use the <code>last_update</code> value in the URL.</li>
+          <li>Only new information is sent.</li>
+          <li>Keep using the same URL until the value of <code>last_update</code> changes.</li>
+
         </ul>
+      </article>
+
+      <article>
+        <h3>Caching</h3>
+        <p></p>
 
         <div class="build">
-          <p>Any element with child nodes can build.</p>
-          <p>It doesn't have to be a list.</p>
-        </div>
-      </article>
-
-      <article class='smaller'>
-        <h3>
-          Slide with bullet points (small font)
-        </h3>
         <ul>
-          <li>
-            Use this template to create your presentation
-          <li>
-            Use the provided color palette, box and arrow graphics, and
-            chart styles
-          <li>
-            Instructions are provided to assist you in using this
-            presentation template effectively
-          <li>
-            At all times strive to maintain Google's corporate look and feel
+          <li>We want to decrease the impact of so many requests.</li>
+          <li>If we cache the URLs, we need a way to break cache when there&rsquo;s new information.</li>
+          <li>So we increment the callback value of the AJAX request.</li>
         </ul>
-      </article>
 
-      <article>
-        <h3>
-          Slide with a table
-        </h3>
-
-        <table>
-          <tr>
-            <th>
-              Name
-            <th>
-              Occupation
-          <tr>
-            <td>
-              Luke Mahé
-            <td>
-              V.P. of Keepin’ It Real
-          <tr>
-            <td>
-              Marcin Wichary
-            <td>
-              The Michael Bay of Doodles
-        </table>
-      </article>
-
-      <article class='smaller'>
-        <h3>
-          Slide with a table (smaller text)
-        </h3>
-
-        <table>
-          <tr>
-            <th>
-              Name
-            <th>
-              Occupation
-          <tr>
-            <td>
-              Luke Mahé
-            <td>
-              V.P. of Keepin’ It Real
-          <tr>
-            <td>
-              Marcin Wichary
-            <td>
-              The Michael Bay of Doodles
-        </table>
-      </article>
-
-      <article>
-        <h3>
-          Styles
-        </h3>
-        <ul>
-          <li>
-            <span class='red'>class="red"</span>
-          <li>
-            <span class='blue'>class="blue"</span>
-          <li>
-            <span class='green'>class="green"</span>
-          <li>
-            <span class='yellow'>class="yellow"</span>
-          <li>
-            <span class='black'>class="black"</span>
-          <li>
-            <span class='white'>class="white"</span>
-          <li>
-            <b>bold</b> and <i>italic</i>
-        </ul>
-      </article>
-
-      <article>
-        <h2>
-          Segue slide
-        </h2>
-      </article>
-
-      <article>
-        <h3>
-          Slide with an image
-        </h3>
-        <p>
-          <img src='http://placekitten.com/500/500/'>
-        </p>
-        <div class='source'>
-          Source: placekitten.com
-        </div>
-      </article>
-
-      <article>
-        <h3>
-          Slide with an image (centered)
-        </h3>
-        <p>
-          <img class="centered" src='http://placekitten.com/600/500'>
-        </p>
-        <div class='source'>
-          Source: Larry Page
-        </div>
-      </article>
-
-      <article class='fill'>
-        <h3>
-          Image filling the slide (with optional header)
-        </h3>
-        <p>
-          <img src='http://placekitten.com/1000/600'>
-        </p>
-        <div class='source white'>
-          Source: Eric Schmidt
-        </div>
-      </article>
-
-      <article>
-        <h3>
-          This slide has some code
-        </h3>
         <section>
-        <pre>
-&lt;script type='text/javascript'&gt;
-  // Say hello world until the user starts questioning
-  // the meaningfulness of their existence.
-  function helloWorld(world) {
-    for (var i = 42; --i &gt;= 0;) {
-      alert('Hello ' + String(world));
-    }
-  }
-&lt;/script&gt;
-&lt;style&gt;
-  p { color: pink }
-  b { color: blue }
-  u { color: 'umber' }
-&lt;/style&gt;
-</pre>
+<pre><code>http://liveupdater.aol.com/live-update/20334012/33883?callback=LB_U33883_C0
+http://liveupdater.aol.com/live-update/20334012/33883?callback=LB_U33883_C1
+http://liveupdater.aol.com/live-update/20334012/33883?callback=LB_U33883_C2
+http://liveupdater.aol.com/live-update/20334012/33883?callback=LB_U33883_C3
+http://liveupdater.aol.com/live-update/20334012/33884?callback=LB_U33883_C0
+</code></pre>
         </section>
-      </article>
 
-      <article class='smaller'>
-        <h3>
-          This slide has some code (small font)
-        </h3>
-        <section>
-        <pre>
-&lt;script type='text/javascript'&gt;
-  // Say hello world until the user starts questioning
-  // the meaningfulness of their existence.
-  function helloWorld(world) {
-    for (var i = 42; --i &gt;= 0;) {
-      alert('Hello ' + String(world));
-    }
-  }
-&lt;/script&gt;
-&lt;style&gt;
-  p { color: pink }
-  b { color: blue }
-  u { color: 'umber' }
-&lt;/style&gt;
-</pre>
-        </section>
+        <p><span class="red">Warning!</span> For jsonp requests, the cache setting on <code>$.ajax</code> defaults to <code>false</code>.</p>
+      </div>
       </article>
 
       <article>
-        <q>
-          The best way to predict the future is to invent it.
-        </q>
-        <div class='author'>
-          Alan Kay
-        </div>
-      </article>
-
-      <article class='smaller'>
-        <q>
-          A distributed system is one in which the failure of a computer
-          you didn’t even know existed can render your own computer unusable.
-        </q>
-        <div class='author'>
-          Leslie Lamport
-        </div>
-      </article>
-
-      <article class='nobackground'>
-        <h3>
-          A slide with an embed + title
-        </h3>
-
-        <iframe src='http://www.google.com/doodle4google/history.html'></iframe>
-      </article>
-
-      <article class='nobackground'>
-        <iframe src='http://www.google.com/doodle4google/history.html'></iframe>
-      </article>
-
-      <article class='fill'>
-        <h3>
-          Full-slide embed with (optional) slide title on top
-        </h3>
-        <iframe src='http://www.google.com/doodle4google/history.html'></iframe>
+        <h2>The UI Plugin</h2>
       </article>
 
       <article>
-        <h3>
-          Thank you!
-        </h3>
+        <p>Originally, we thought many sites would make their own UI plugins.</p>
 
-        <ul>
-          <li>
-            <a href='http://www.google.com'>google.com</a>
+        <ul class="build">
+          <li>Display updates</li>
+          <li>Update them</li>
+          <li>Delete them</li>
+          <li>Make it all look pretty</li>
+          <img src="images/no.gif" />
         </ul>
+      </article>
+
+      <article>
+        <p>Actually, we need a lot more.</p>
+
+        <ul class="build">
+          <li>permalinks</li>
+          <li>a slider</li>
+          <li>Tweet buttons</li>
+          <li>thumbnails</li>
+          <li>a way to view the large versions of thumbnails</li>
+          <li>tags</li>
+          <li>pause / resume</li>
+          <li>update notifications</li>
+          <li>optimization</li>
+        </ul>
+      </article>
+
+      <article>
+        <iframe src="http://localhost:8000/examples/techtalk_demo.html"></iframe>
+      </article>
+
+      <article>
+        <h2>Lessons Learned</h2>
+      </article>
+
+      <article>
+
+        <h3>Optimization</h3>
+
+        <div class="build">
+
+          <div>
+
+            <ul>
+              <li>Start / stop polling when the live blog is on / off screen</li>
+              <li>Only load images when visible</li>
+            </ul>
+          </div>
+
+          <div>
+
+            <h3>Sometimes, perceived load time is more important than load time.</h3>
+
+            <ul>
+              <li><code>setTimeout(0)</code></li>
+              <li>Load updates in chunks</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article>
+        <h3>Iteration and Observation</h3>
+
+        <ul class="build">
+          <li>Updates notification</li>
+          <li>Image resizing</li>
+          <li>Featured authors</li>
+          <li>Embedded HTML</li>
+        </ul>
+      </article>
+
+      <article>
+        <iframe src="http://localhost:8000/examples/grammys.html"></iframe>
+      </article>
+
+      <article>
+        <h3>Simplicity is good, but it can have its limitations.</h3>
+        <p>We could use some views.</p>
+      </article>
+
+      <article>
+        <h3>Dev Environment</h3>
+
+        <ul class="build">
+          <li>Local server</li>
+          <li>Project styleguide, enforced with linting</li>
+          <li>Version control</li>
+          <li>Automatic build</li>
+          <img class="centered" src="images/happy-cosby.gif" />
+        </ul>
+
+      </article>
+
+      <article>
+        <h3>Thanks!</h3>
       </article>
 
     </section>
