@@ -201,8 +201,8 @@
 
 
 
-      <article class='biglogo'>
-      </article>
+      <!--<article class='biglogo'>-->
+      <!--</article>-->
 
       <article>
         <h1>
@@ -216,659 +216,130 @@
       </article>
 
       <article>
-        <h3>
-            This is Doug Neiner.
-        </h3>
+        <h2>Humble Beginnings</h2>
+      </article>
 
-        <p class="frame left">
-            <img src="images/doug-neiner.jpg">
-        </p>
-
-        <p class="frame left">
-            <img src="images/doug-neiner-slide.png">
-        </p>
-
-        <div class="build clear">
-            <p>This is a fork of a presentation he gave at jQuery Conference 2011 in Boston.</p>
-            <p>It was awesome. So I&rsquo;m &ldquo;repurposing&rdquo; it.</p>
-            <p>Maybe&hellip; maybe don&rsquo;t mention this to him.</p>
-        </div>
-
+      <article class="fill">
+        <iframe src="http://www.engadget.com/2013/02/26/live-from-the-connecting-the-next-billions-keynote-with-stephe/"></iframe>
       </article>
 
       <article>
-            <h3>Pre-optimization is really, really bad.</h3>
-            <div class="build">
-                <p>But super easy to get caught up in.</p>
-            </div>
+        <h3>AOL.com should have a live blog!</h3>
+        <p></p>
+        <div class="build">
+          <p>Engadget's current implementation was &ldquo;exceedingly tightly coupled&rdquo; to their&nbsp;site.</p>
+          <p>But Joe Bartlett had already built a rewritten publisher!</p>
+          <p>But it required jQuery 1.7+.</p>
+          <p>And AOL.com's version of jQuery was 1.5.2.</p>
+          <p><img src="images/sad-batman.gif" /></p>
+        </div>
       </article>
 
-        <article>
-            <h3>jQuery Code Styles</h3>
+      <article>
+        <q>Why not just build a new one?</q>
+        <div class="author">Dave Artz</div>
+      </article>
 
-            <ul class="build">
-                <li>Declarative</li>
+      <article>
+        <p>
+          <img class="centered" src='images/101-dalmations.gif' />
+        </p>
+      </article>
 
-                <li>Dynamic</li>
+      <article>
+        <h2>Starting Over</h2>
+      </article>
 
-                <li>Contextual</li>
-            </ul>
-        </article>
+      <article>
+        <h3>jQuery Plugin</h3>
 
-        <article>
-            <h3>Declarative</h3>
+        <ul>
+          <li>Very simple pattern</li>
+          <li>AOL developers are used to working with them</li>
+          <li>We were used to writing them</li>
+        </ul>
 
-            <ul>
-                <li>Heavy use of IDs</li>
-                <li>All traditional event binding</li>
-                <li>Often repeated code with slight variations</li>
-                <li>Changes to HTML often require changes to JS and vice versa</li>
-                <li>Large number of selectors running on Document Ready</li>
-            </ul>
-        </article>
+        <section>
+          <pre><code>$.fn.myWidget = function () {
+  return this.each(function () {
+    $(this).append('&lt;p&gt;Hello world!&lt;/p&gt;');
+  });
+};
 
-        <article>
-            <pre>
-$(function () {
-    var $container = $( '#container' ),
-        $slider = $( '#slider' ),
-        $footer = $( '#footer' );
+$('p').myWidget();</code></pre>
+        </section>
+      </article>
 
-    $( "#toggle" ).click(function () {
-        $container.toggle();
+      <article>
+        <h3>Two plugins, actually.</h3>
+
+        <ul class="build">
+          <li><code>$.liveUpdateApi</code></li>
+          <li><code>$.liveUpdateUi</code></li>
+        </ul>
+      </article>
+
+      <article>
+        <h3><code>$.liveUpdateApi</code></h3>
+
+        <section>
+          <pre>
+<code>$.fn.liveUpdateApi = function () {
+  return this.each(function () {
+    // Hit the Live Update API with an AJAX call
+
+    $(this).trigger('update', {
+      // Data from the API
     });
+  });
+});</code></pre>
+        </section>
+      </article>
 
-    $slider.click(function () {
-        $footer.html( $slider.html() );
+      <article>
+        <h3><code>$.liveUpdateUi</code></h3>
+
+        <section>
+          <pre><code>$.fn.liveUpdateUi = function () {
+  return this.each(function () {
+    var $this = $(this);
+
+    $this.liveUpdateApi();
+    $this.bind('update', function (data) {
+      // Build some UI with the incoming data
     });
-});
-            </pre>
-        </article>
+  });
+});</code></pre>
+      </article>
+
+      <article>
+        <h2>The API Plugin</h2>
+      </article>
+
+      <article>
+        <h3>Method / Instantiation Pattern</h3>
+
+        <section>
+          <pre><code>var methods = {
+  init: function (options) {},
+  fetch: function () {},
+  pause: function () {},
+  resume: function () {}
+};
+
+return this.each(function () {
+  if (methods[method]) {
+    return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+  } else if (typeof method === 'object' || ! method) {
+    return methods.init.apply(this, args);
+  } else {
+    $.error('Method ' + method + ' does not exist on jQuery.liveBlogApi.');
+  }
+});</code></pre>
+        </section>
+      </article>
 
-        <article>
-            <h3>Dynamic</h3>
 
-            <ul>
-                <li>Heavy use of classes, simple selectors</li>
-                <li>Mixture of traditional binding and live/delegate binding</li>
-                <li>Less repeated code</li>
-                <li>Changes to HTML may still require change to JS</li>
-                <li>Many selectors still running on Document Ready</li>
-            </ul>
-        </article>
-
-        <article>
-            <pre>
-$(function () {
-    var $container = $( '#container' );
-
-    $( 'a.toggle' ).live( 'click', function( e ) {
-        $container.toggle();
-        e.preventDefault();
-    });
-});
-            </pre>
-        </article>
-
-        <article>
-            <h3>Contextual</h3>
-
-            <ul>
-                <li>Heavy use of selectors and traversing</li>
-                <li>Minimal use of IDs or classes</li>
-                <li>Very little repeated code</li>
-                <li>HTML follows a convention so edits require fewer changes to the JS</li>
-                <li>Virtually no selectors running on Document Ready</li>
-            </ul>
-        </article>
-
-        <article>
-            <pre>
-$( 'form a.submit' ).live( 'click', function( e ) {
-    e.preventDefault();
-    $( this )
-        .closest( 'form' )
-        .find( '.errors' ).slideUp().end()
-        .submit();
-});
-            </pre>
-        </article>
-
-        <article>
-            <h2>Benefits of Contextual jQuery</h2>
-        </article>
-
-        <article>
-            <h3>Benefits</h3>
-
-            <ul>
-                <li>Faster, flexible, and more responsive code</li>
-                <li>Focused use of resources</li>
-                <li>Less code</li>
-                <li>Easier to maintain</li>
-                <li>Easier to reuse</li>
-            </ul>
-        </article>
-
-        <article>
-            <h2>Implementation</h2>
-        </article>
-
-        <article>
-            <h3>Three Parts</h3>
-
-            <ul>
-                <li>Live Events</li>
-                <li>Traversal, Filters, and Selectors</li>
-                <li>HTML Conventions</li>
-            </ul>
-        </article>
-
-        <article>
-            <h2>Live Events</h2>
-        </article>
-
-        <article>
-            <h3>Bound Events</h3>
-
-            <pre>
-$( 'a' ).click( ... );
-            </pre>
-
-            <figure id="bound-events">
-                <figcaption>document</figcaption>
-
-                <figure>
-                    <figcaption>&lt;div#container&gt;</figcatpion>
-
-                    <figure>
-                        <figcaption>&lt;a&gt;</figcaption>
-                        <figure class="arrow up"></figure>
-                        <figure class="bubble point-left">
-                            <figcaption>Click Handler</figcaption>
-                        </figure>
-                    </figure>
-
-                    <figure>
-                        <figcaption>&lt;a&gt;</figcaption>
-                        <figure class="bubble point-left">
-                            <figcaption>Click Handler</figcaption>
-                        </figure>
-                    </figure>
-
-                </figure>
-            </figure>
-        </article>
-
-        <article>
-            <h3>Live Events</h3>
-            <pre>
-$( 'a' ).live( 'click',  ... ); // 1.3+
-$( document ).on( 'click', 'a', ... ); // 1.7+
-            </pre>
-
-            <figure id="live-events">
-                <figcaption>document</figcaption>
-                <figure class="bubble point-left">
-                    <figcaption>Click Handler</figcaption>
-                </figure>
-
-                <figure>
-                    <figcaption>&lt;div#container&gt;</figcatpion>
-
-                    <figure>
-                        <figcaption>&lt;a&gt;</figcaption>
-                        <figure class="arrow up"></figure>
-                    </figure>
-
-                    <figure>
-                        <figcaption>&lt;a&gt;</figcaption>
-                    </figure>
-
-                </figure>
-            </figure>
-        </article>
-
-        <article>
-            <h3>Delegate Events</h3>
-            <pre>
-$( '#container' ).delegate( 'a', 'click',  ... ); // 1.4.3+
-$( '#container' ).on( 'click', 'a', ... ); // 1.7+
-            </pre>
-
-            <figure id="delegate-events">
-                <figcaption>document</figcaption>
-
-                <figure>
-                    <figcaption>&lt;div#container&gt;</figcatpion>
-                    <figure class="bubble point-left">
-                        <figcaption>Click Handler</figcaption>
-                    </figure>
-
-                    <figure>
-                        <figcaption>&lt;a&gt;</figcaption>
-                        <figure class="arrow up"></figure>
-                    </figure>
-
-                    <figure>
-                        <figcaption>&lt;a&gt;</figcaption>
-                    </figure>
-
-                </figure>
-            </figure>
-        </article>
-
-        <article>
-
-            <table>
-                <tr>
-                    <th>
-                        Bind
-                    </th>
-
-                    <th>
-                        Delegate
-                    </th>
-                <tr>
-                    <td>
-                        Separate handler for each element
-                    </td>
-                    <td>
-                        Single handler for all elements
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        Executes only when event is triggered on bound elements
-                    </td>
-                    <td>
-                        Checks event on every element in its context, and executes when a match is found
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        Elements can be retrieved ahead of time
-                    </td>
-                    <td>
-                        Elements should be retrieved at run time
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        Must be bound after the DOM is ready
-                    </td>
-                    <td>
-                        Can be set up at any time
-                    </td>
-                </tr>
-
-            </table>
-
-        </article>
-
-        <article>
-            <h3>What about initialization?</h3>
-
-            <ul>
-                <li>Keep the setup minimal
-
-                    <ul>
-                        <li>Use CSS and js / no-js classes</li>
-                        <li>Use selectors or data to determine initialization state</li>
-                    </ul>
-                </li>
-                <li>Always opt for just-in-time initialization</li>
-            </ul>
-        </article>
-
-        <article>
-            <h3>js / no-js</h3>
-
-            <pre>
-&lt;!doctype html&gt;
-&lt;html class="no-js"&gt;
-&lt;head&gt;
-    &lt;meta charset="utf-8"&gt;
-    &lt;title&gt;Sample&lt;/title&gt;
-    &lt;style&gt;
-        html.no-js .js, html.js .no-js { display: none; }
-    &lt;/style&gt;
-    &lt;script&gt;
-        document.documentElement.className =
-            document.documentElement.className.replace( 'no-js' );
-    &lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div class="no-js"&gt;&lt;a href="/about"&gt;Learn About Us&lt;/a&gt;&lt;/div&gt;
-    &lt;div class="js"&gt;Something amazing!&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-            </pre>
-        </article>
-
-        <article>
-            <h3>Determine Initialization State</h3>
-
-            <pre>
-$( 'a[href^=contact]' ).live( 'click', function ( event ) {
-    var dialog = $( '#dialog' );
-    if ( dialog.data( 'dialog' ) ) {
-        dialog.dialog( 'open' );
-    } else {
-        dialog.dialog();
-    }
-    event.preventDefault();
-});
-
-$( 'a[href^=contact]' ).live( 'click', function ( event ) {
-    var dialog = $( document ).data( 'dialog' ) ||
-                 $( document )
-                    .data( 'dialog', $( '#dialog' ).dialog( { autoOpen: false } ) )
-                    .data( 'dialog' );
-
-    dialog.dialog( 'open ' );
-});
-            </pre>
-        </article>
-
-        <article>
-            <h3>Write code like you spend money</h3>
-
-            <p>Opt to pay a little more later so you don&rsquo;t risk losing it all on something that never happens.</p>
-        </article>
-
-        <article>
-            <h2>Traversal, Filters, and Selectors</h2>
-        </article>
-
-        <article>
-            <h3>Traversal Methods</h3>
-
-            <table class="borderless">
-                <tr>
-                    <td>
-                        <ul>
-                            <li>prev</li>
-                            <li>prevAll</li>
-                            <li>prevUntil</li>
-                            <li>next</li>
-                            <li>nextAll</li>
-                            <li>nextUntil</li>
-                            <li>siblings</li>
-                            <li>parent</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul>
-                            <li>parents</li>
-                            <li>parentsUntil</li>
-                            <li>offsetParent</li>
-                            <li>closest</li>
-                            <li>children</li>
-                            <li>find</li>
-                            <li>end</li>
-                        </ul>
-                    </td>
-                </tr>
-            </table>
-        </article>
-
-        <article>
-            <table>
-                <tr>
-                    <th>Brittle</th>
-                    <th>Flexible</th>
-                </tr>
-                <tr>
-                    <td>prev</td>
-                    <td>prevAll</td>
-                </tr>
-                <tr>
-                    <td>next</td>
-                    <td>nextAll</td>
-                </tr>
-                <tr>
-                    <td>parent</td>
-                    <td>closest</td>
-                </tr>
-                <tr>
-                    <td>children</td>
-                    <td>find</td>
-                </tr>
-            </table>
-        </article>
-
-        <article>
-            <h3>What does this do?</h3>
-
-            <pre>
-$( 'a' ).next( 'div' );
-            </pre>
-        </article>
-
-        <article>
-            <h3>Try this instead</h3>
-
-            <pre>
-$( 'a' ).nextAll( 'div:first' );
-            </pre>
-        </article>
-
-        <article>
-            <h3>Traversal Methods</h3>
-
-            <table class="borderless">
-                <tr>
-                    <td>
-                        <ul>
-                            <li>prev</li>
-                            <li>prevAll</li>
-                            <li>prevUntil</li>
-                            <li>next</li>
-                            <li>nextAll</li>
-                            <li>nextUntil</li>
-                            <li>siblings</li>
-                            <li>parent</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul>
-                            <li>parents</li>
-                            <li>parentsUntil</li>
-                            <li>offsetParent</li>
-                            <li>closest</li>
-                            <li>children</li>
-                            <li>find</li>
-                            <li>end</li>
-                        </ul>
-                    </td>
-                </tr>
-            </table>
-        </article>
-
-        <article>
-            <h3>Which is faster?</h3>
-
-            <pre>
-$( this )
-    .closest( 'form' )
-    .nextAll( 'nav:first' )
-    .hide();
-
-$( '#form-nav' ).hide();
-            </pre>
-        </article>
-
-        <article>
-            <h3>Filter Methods</h3>
-
-            <ul>
-                <li>filter</li>
-                <li>eq</li>
-                <li>first</li>
-                <li>slice</li>
-                <li>has</li>
-                <li>not</li>
-            </ul>
-        </article>
-
-        <article>
-            <h3>Not vs. Is</h3>
-            <pre>
-if ( $( 'a' ).not( 'a' ) ) {
-    alert( 'Why does this work?' );
-}
-            </pre>
-            <!-- Because it returns an empty jQuery object, which is truthy -->
-
-            <pre>
-if ( $( 'a' ).is( ':not( a )' ) {
-    alert( 'This won\'t show... phew!' );
-}
-
-if ( ! $( 'a' ).is( 'a' ) ) {
-    alert( 'This won\'t show either!' );
-}
-            </pre>
-        </article>
-
-        <article>
-            <h3>Selectors</h3>
-
-            <ul>
-                <li><a href="http://api.jquery.com/category/selectors">http://api.jquery.com/category/selectors</a></li>
-                <li>A few selectors:
-                    <ul>
-                        <li>[name = word], [name != word]</li>
-                        <li>[name ^= word], [name $= word]</li>
-                        <li>.stacked.classes</li>
-                        <li>div:has( a )</li>
-                        <li>div, a, p</li>
-                    </ul>
-                </li>
-            </ul>
-        </article>
-
-        <article>
-            <h3>Which is faster?</h3>
-            <pre>
-$( 'a[href *= twitter.com]' );
-
-$( 'a.twitter' );
-            </pre>
-        </article>
-
-        <article>
-            <h3>Write code like you buy a car</h3>
-
-            <p>Always weigh the difference between cost and quality.</p>
-        </article>
-
-        <article>
-            <h2>HTML Conventions</h2>
-        </article>
-
-        <article>
-            <h3>Semantic HTML</h3>
-
-            <pre>
-&lt;div&gt;
-    &lt;p class=&quot;post-title&quot;&gt;My Article&lt;/p&gt;
-    &lt;p class=&quot;post-author&quot;&gt;&lt;del&gt;Doug Neiner&lt;/del&gt; Nate Eagle&lt;/p&gt;
-
-    &lt;p&gt;Hi there!&lt;/p&gt;
-    &lt;p class=&quot;post-quote&quot;&gt;My quote!&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;post&quot;&gt;
-    &lt;h2&gt;My Article&lt;/h2&gt;
-    &lt;cite&gt;&lt;del&gt;Doug Neiner&lt;/del&gt; Nate Eagle&lt;/cite&gt;
-
-    &lt;p&gt;Hi there!&lt;/p&gt;
-    &lt;blockquote&gt;My quote!&lt;/blockquote&gt;
-&lt;/div&gt;
-            </pre>
-        </article>
-
-        <article>
-            <h3>Conventions are Patterns</h3>
-
-            <ul>
-                <li>You can build them yourself</li>
-                <li>They need to be consistent (or they are&rsquo;t patterns)</li>
-                <li>They are a promise you make</li>
-                <li>They can change between projects</li>
-                <li>They need to work for you!</li>
-            </ul>
-        </article>
-
-        <article>
-            <h3>Don&rsquo;t think of IDs and classes as your first line of attack!</h3>
-        </article>
-
-        <article>
-            <h3>Keep your markup clean</h3>
-
-            <pre>
-&lt;div class=&quot;record&quot;&gt;
-    &lt;h2&gt;My song&lt;/h2&gt;
-    &lt;cite&gt;My author&lt;/cite&gt;
-    &lt;nav&gt;
-        &lt;a href=&quot;/song/5/preview&quot;&gt;Preview&lt;/a&gt;
-        &lt;a href=&quot;/song/5/edit&quot;&gt;Edit&lt;/a&gt;
-    &lt;/nav&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;record&quot;&gt;
-    &lt;h2&gt;My song&lt;/h2&gt;
-    &lt;cite&gt;My author&lt;/cite&gt;
-    &lt;nav&gt;
-        &lt;a href=&quot;/song/5/preview&quot;&gt;Preview&lt;/a&gt;
-        &lt;a href=&quot;/song/5/edit&quot;&gt;Edit&lt;/a&gt;
-    &lt;/nav&gt;
-&lt;/div&gt;
-            </pre>
-        </article>
-
-        <article>
-            <h3>Example Code</h3>
-
-            <pre>
-$( 'a[href $= preview]', 'a[href $= edit]' ).live( 'click', function ( event ) {
-    var $this = $( this ),
-        parts = $this.attr( 'href' ).split( '/' ),
-        id = parts[2],
-        action = parts[3],
-        author = $this.closest( 'div' ).find( 'cite' ).html();
-
-    if ( action === 'preview' ) {
-        ...
-    }
-
-    event.preventDefault();
-});
-            </pre>
-        </article>
-
-        <article>
-            <h3>Write code like you ask for directions.</h3>
-
-            <p>Try to get there on your own first!</p>
-        </article>
-
-        <article>
-            <h3>In review</h3>
-
-            <ul>
-                <li>Don&rsquo;t spend resources early, strive for just-in-time wherever possible.</li>
-                <li>Don&rsquo;t be afraid to use complex selectors in the right settings.</li>
-                <li>Think twice before adding IDs or classes to your markup. See if there is another way first.</li>
-                <li>Always write your code with reusability in mind. Think in conventions as you work.</li>
-            </ul>
-        </article>
 
 
       <article class='smaller'>
@@ -1161,8 +632,8 @@ $( 'a[href $= preview]', 'a[href $= edit]' ).live( 'click', function ( event ) {
 
   <script src="http://o.aolcdn.com/os_merge/?file=/aol/jquery-1.7.min.js"></script>
   <script src="jquery.easing.1.3.js"></script>
-  <script src="three.js/build/Three.js"></script>
-  <script src="fed-slides.js"></script>
+  <!--<script src="three.js/build/Three.js"></script>-->
+  <!--<script src="fed-slides.js"></script>-->
   </body>
 </html>
 

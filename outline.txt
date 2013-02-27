@@ -1,0 +1,79 @@
+* AOL.com wanted a live blog for the first Presidential debate
+* Engadget has an awesome live blog
+* Joe Bartlett's Live Blog Publisher: fancy!
+* Uses deferreds, other awesome stuff.
+* AOL.com's version of jQuery is 1.5.2
+* Sad foghorn.
+* Can't we get AOL.com to upgrade their version of jQuery?
+* Umm, no. Lots of testing. Tight turnaround.
+* Dave Artz: "Just remake it! It can't be that complicated."
+* "But there's already a great implementation of it."
+* Grumble Grumble
+* Rebuild!
+
+* Build as a jQuery Plugin
+* Build as TWO jQuery Plugins
+* jQuery events are the perfect way to broadcast data.
+* One plugin to interact with the API and broadcast events, one plugin to listen and build a UI.
+
+* API: callback structure, caching scheme (note about cache setting for AJAX)
+
+* UI: original vision was that it was a lightweight UI, many sites would want to roll their own
+* Original feature set: display posts, update them, delete them
+* Actually, we need: permalinks, slider, Tweet buttons, DIMS for thumbnails
+* ACTUALLY, we need: pop-up dialog for images, imagesLoaded plugin, tag filtering, updates notification
+* (Still more! Featured author functionality)
+* Taking too long to load when there are a lot of updates
+* Optimize perceived load time: setTimeout, load in chunks
+
+* Optimize ping interval... turn off pinging when not visible with jQuery Sonar
+
+* Lessons learned:
+* Effective UI happens slowly, with iteration, and comes from observing something being used
+* Simple is good, but lack of architecture can limit growth. UI feels like it needs a view structure
+* Automated build, effortless local environment, standardized project syntax with linting makes development a pleasure
+
+
+
+jQuery-Powered Live Blogging
+============================
+
+jQuery Plugin Format
+jQuery events for API returns
+jQuery plugin pattern for methods / instantiation
+
+Grunt JS
+========
+* Concatenation and minification
+* Linting
+* Local server
+* Watch
+
+Compass
+=======
+* Nesting
+* Mixins for browser compatibility
+* Variables (Twitter example)
+
+Optimization
+============
+* Sonar to turn on / off polling (note how easy it was to use with existing live / die methods)
+* Just-in-time loading for Tweet buttons
+* Use of setTimeouts and chunks to improve perceived load time
+
+
+
+
+The audience is anyone in technology--usually folks who are in a
+technical
+role (engineers). Purpose is to share/talk about a specific technology
+(internal or external) and how your team is applying and utilizing it
+currently. The idea is to share your experience and knowledge, what
+worked
+and what didn't, and hope it'll provide opportunity to collaborate with
+others who may be interested in applying to their work. The session takes
+place during the lunch hour (12:00 -1:00) where we'll provide food and
+refreshment to attendants. So ideally, you should allot ~40 minutes to
+provide a brief overview of the technology, your team's implementation
+and
+some lessons learned followed by ~15 minutes of Q&A.
