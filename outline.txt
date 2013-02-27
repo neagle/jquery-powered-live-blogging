@@ -77,3 +77,13 @@ refreshment to attendants. So ideally, you should allot ~40 minutes to
 provide a brief overview of the technology, your team's implementation
 and
 some lessons learned followed by ~15 minutes of Q&A.
+
+
+
+
+
+Notes from Jeremy
+=================
+Talk about reason for open-sourcing
+Good advertisement for AOL
+
