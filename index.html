@@ -466,7 +466,9 @@ return this.each(function () {
         <h3>URL Pattern</h3>
         <ul class="build">
           <li><code class="blue">postId/0</code><br>The initial call grabs everything.</li>
-          <li>In that call&rsquo;s data is a <code>last_update</code> value.</li>
+          <li>In that call&rsquo;s data is a <code>last_update</code> value.<br><br>
+          <code class="smaller">LB_U33890_C0({ &hellip; "last_update":33890 &hellip; })</code>
+          </li>
           <li><code class="green">postId/12432</code><br>For subsequent calls, use the <code>last_update</code> value in the URL.</li>
           <li>Only new information is sent.</li>
           <li>Keep using the same URL until the value of <code>last_update</code> changes.</li>
@@ -488,11 +490,11 @@ return this.each(function () {
         </ul>
 
         <section>
-<pre><code>http://liveupdater.aol.com/live-update/20334012/33883?callback=LB_U33883_C0
+<pre class="lang-html"><code>http://liveupdater.aol.com/live-update/20334012/33883?callback=LB_U33883_C0
 http://liveupdater.aol.com/live-update/20334012/33883?callback=LB_U33883_C1
 http://liveupdater.aol.com/live-update/20334012/33883?callback=LB_U33883_C2
 http://liveupdater.aol.com/live-update/20334012/33883?callback=LB_U33883_C3
-http://liveupdater.aol.com/live-update/20334012/33884?callback=LB_U33883_C0
+http://liveupdater.aol.com/live-update/20334012/<span style="color: orange;">33884?callback=LB_U33884_C0</span>
 </code></pre>
         </section>
 
@@ -593,7 +595,7 @@ http://liveupdater.aol.com/live-update/20334012/33884?callback=LB_U33883_C0
       </article>
 
       <article>
-        <h3>Dev Environment</h3>
+        <h3>Development Environment</h3>
 
         <ul class="build">
           <li>Local server</li>
@@ -605,8 +607,10 @@ http://liveupdater.aol.com/live-update/20334012/33884?callback=LB_U33883_C0
 
       </article>
 
-      <article>
+      <article class="smaller">
         <h3>Liveblog Events, So Far...</h3>
+
+        <h4>AOL.com</h4>
 
         <ul>
           <li>Presidential Debates (4)</li>
@@ -617,10 +621,19 @@ http://liveupdater.aol.com/live-update/20334012/33884?callback=LB_U33883_C0
           <li>Oscars</li>
           <li>MAKERS Documentary Release</li>
         </ul>
+
+        <h4>AOL Music Blog / Spinner</h4>
+
+        <ul>
+          <li>Global Poverty Project</li>
+          <li>Sandy 2013 Concert</li>
+          <li>Grammys</li>
+        </ul>
       </article>
 
       <article>
         <h3>Thanks!</h3>
+        <p>Questions?</p>
       </article>
 
     </section>
