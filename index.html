@@ -213,7 +213,7 @@
           jQuery-Powered Live Blogging
         </h1>
         <p>
-          Jeremy Jannotta &amp; Nate Eagle
+          Nate Eagle &amp; Jeremy Jannotta
           <br>
           February 28, 2013
         </p>
@@ -467,10 +467,10 @@ return this.each(function () {
         <ul class="build">
           <li><code class="blue">postId/0</code><br>The initial call grabs everything.</li>
           <li>In that call&rsquo;s data is a <code>last_update</code> value.<br><br>
-          <code class="smaller">LB_U33890_C0({ &hellip; "last_update":33890 &hellip; })</code>
+          <code class="smaller">{ &hellip; "last_update":33890 &hellip; }</code>
           </li>
-          <li><code class="green">postId/12432</code><br>For subsequent calls, use the <code>last_update</code> value in the URL.</li>
-          <li>Only new information is sent.</li>
+          <li><code class="green">postId/33890</code><br>For subsequent calls, use the <code>last_update</code> value in the URL.</li>
+          <li>Only new updates are sent.</li>
           <li>Keep using the same URL until the value of <code>last_update</code> changes.</li>
 
         </ul>
@@ -507,7 +507,8 @@ http://liveupdater.aol.com/live-update/20334012/<span style="color: orange;">338
       </article>
 
       <article>
-        <p>Originally, we thought many sites would make their own UI plugins.</p>
+        <h3>Originally, we thought many sites would make their own UI plugins.</h3>
+        <p>It&rsquo;s pretty simple.</p>
 
         <ul class="build">
           <li>Display updates</li>
@@ -546,6 +547,13 @@ http://liveupdater.aol.com/live-update/20334012/<span style="color: orange;">338
         <h3>Starting over might be easier than it looks.</h3>
 
         <p>But if you can, don&rsquo;t make the next person do it.</p>
+
+        <ul class="build">
+          <li>Customizable</li>
+          <li>Light-weight</li>
+          <li>Easy to drop in place</li>
+          <li>Good documentation</li>
+        </ul>
       </article>
 
       <article>
